@@ -5,11 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../controller/home_controller.dart';
+import '../../controller/homescreen_cntrl.dart';
 import '../../core/constant/color.dart';
 import '../../data/model/categoriesmodel.dart';
 import '../../linkapi.dart';
 
-class ListCategoriesHome extends GetView<HomeControllerImp> {
+class ListCategoriesHome extends GetView<HomescreenCntrl> {
   const ListCategoriesHome({Key? key}) : super(key: key);
 
   @override
@@ -21,10 +22,59 @@ class ListCategoriesHome extends GetView<HomeControllerImp> {
         itemCount: 18, //controller.categories.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-          return Categories(
+          return
+          /* Categories(
             /*  categoriesModel: CategoriesModel.fromJson(
               controller.categories[index],
             ), */
+          ); */
+          Row(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColor.thirdColor,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    height: 70,
+                    width: 70,
+                    child: // Image.asset("assets/images/1.png"),
+                    /*  SvgPicture.network(
+                "${AppLink.imagestCategories}/${categoriesModel.categoriesImage}",
+                color: AppColor.secondColor,
+              ), */
+                    SvgPicture.network(
+                      "${controller.productsModel!.products![index].thumbnail}",
+                      color: AppColor.secondColor,
+                    ),
+                  ),
+                  //SizedBox(height: 7),
+                  /*   Text(
+              " Hello static ",
+              //  "${categoriesModel.categoriesName}",
+              style: const TextStyle(fontSize: 13, color: AppColor.black),
+            ), */
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    " Title ",
+                    //  "${categoriesModel.categoriesName}",
+                    style: const TextStyle(fontSize: 13, color: AppColor.black),
+                  ),
+                  SizedBox(height: 7),
+                  Text(
+                    " Description Hello static ",
+                    //  "${categoriesModel.categoriesName}",
+                    style: const TextStyle(fontSize: 13, color: AppColor.black),
+                  ),
+                ],
+              ),
+            ],
           );
         },
       ),
@@ -32,7 +82,7 @@ class ListCategoriesHome extends GetView<HomeControllerImp> {
   }
 }
 
-class Categories extends StatelessWidget {
+class Categories extends GetView<HomescreenCntrl> {
   final CategoriesModel? categoriesModel;
   const Categories({Key? key, this.categoriesModel}) : super(key: key);
 
@@ -50,13 +100,17 @@ class Categories extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               height: 70,
               width: 70,
-              child: Image.asset("assets/images/1.png"),
+              child: // Image.asset("assets/images/1.png"),
               /*  SvgPicture.network(
                 "${AppLink.imagestCategories}/${categoriesModel.categoriesImage}",
                 color: AppColor.secondColor,
               ), */
+              SvgPicture.network(
+                "${controller.productsModel!.products![0].thumbnail}",
+                color: AppColor.secondColor,
+              ),
             ),
-            SizedBox(height: 7),
+            //SizedBox(height: 7),
             /*   Text(
               " Hello static ",
               //  "${categoriesModel.categoriesName}",

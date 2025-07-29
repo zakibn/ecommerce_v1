@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/home_controller.dart';
+import '../../controller/homescreen_cntrl.dart';
 import '../../core/class/handlingdataview.dart';
 import '../widget/customappbar.dart';
 import '../widget/customcardhome.dart';
@@ -46,9 +47,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeControllerImp());
+    Get.put(HomescreenCntrl());
     return Scaffold(
-      body: GetBuilder<HomeControllerImp>(
+      body: GetBuilder<HomescreenCntrl>(
         builder:
             (controller) => Container(
               padding: EdgeInsets.symmetric(horizontal: 15),

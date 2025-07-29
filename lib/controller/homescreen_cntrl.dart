@@ -5,6 +5,13 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class HomescreenCntrl extends GetxController {
+  @override
+  void onInit() {
+    getdata();
+
+    super.onInit();
+  }
+
   ProductsModel? productsModel;
 
   getdata() async {
@@ -15,5 +22,6 @@ class HomescreenCntrl extends GetxController {
     productsModel = ProductsModel.fromJson(data);
 
     print(productsModel!.products![0].title);
+    update();
   }
 }

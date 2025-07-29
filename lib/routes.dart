@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 import 'view/screen/HomePage.dart';
+import 'view/screen/listview.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: () => HomePage()),
+  //GetPage(name: "/", page: () => HomePage()),
+  GetPage(name: "/", page: () => ListView1()),
 
   //   GetPage(
   //   name: "/",
