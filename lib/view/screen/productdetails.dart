@@ -9,7 +9,12 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("${product.products![index].title}")),
+      body: ListView.builder(
+        itemCount: product.products![index].images!.length,
+        itemBuilder:
+            (BuildContext context, int e) =>
+                Text("${product.products![index].title}"),
+      ),
     );
   }
 }
