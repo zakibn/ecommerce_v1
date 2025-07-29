@@ -1,3 +1,4 @@
+import 'package:ecommerce_v1/view/screen/productdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../controller/homescreen_cntrl.dart';
 import '../../core/constant/color.dart';
+import '../../data/model/productsmodel.dart';
 import '../widget/customappbar.dart';
 import '../widget/customcardhome.dart';
 
@@ -51,7 +53,14 @@ class ListView1 extends StatelessWidget {
                                       ), */
                                     ); */
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(
+                                      () => ProductDetails(
+                                        product: controller.productsModel!,
+                                        index: index,
+                                      ),
+                                    );
+                                  },
                                   child: Row(
                                     children: [
                                       Column(
