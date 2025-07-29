@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class HomescreenCntrl extends GetxController {
   ProductsModel? productsModel;
 
-  getdata1() async {
+  getdata() async {
     http.Response response = await http.get(
       Uri.parse("https://jsonexamples.com/products"),
     );
