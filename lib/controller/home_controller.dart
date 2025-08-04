@@ -9,7 +9,7 @@ import '../core/class/statusrequest.dart';
 import '../core/functions/handingdatacontroller.dart';
 import '../data/datasource/remote/home_data.dart';
 
-abstract class HomeController extends GetxController {
+/* abstract class HomeController extends GetxController {
   // initialData();
   getdata();
 }
@@ -55,5 +55,69 @@ class HomeControllerImp extends HomeController {
       }
     }
     update();
+  }
+} */
+
+import 'package:ecommerce_v1/data/model/productsmodel.dart';
+import 'package:get/get.dart';
+import '../core/class/statusrequest.dart';
+import '../core/functions/handingdatacontroller.dart';
+import '../data/datasource/remote/home_data.dart';
+
+abstract class HomeController extends GetxController {
+  getdata();
+}
+
+class HomeControllerImp extends HomeController {
+  HomeData homedata = HomeData(Get.find());
+  ProductsModel? productsModel;
+  late StatusRequest statusRequest;
+
+  @override
+  void onInit() {
+    getdata();
+    super.onInit();
+  }
+
+  /*  @override
+  getdata() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homedata.getData();
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        productsModel = ProductsModel.fromJson(response);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  } */
+
+  @override
+  getdata() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await homedata.getData();
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    print("StatusRequest: $statusRequest");
+    if (StatusRequest.success == statusRequest) {
+      try {
+        productsModel = ProductsModel.fromJson(response);
+      } catch (e) {
+        print("Error parsing productsModel: $e");
+        statusRequest = StatusRequest.failure;
+      }
+    } else {
+      statusRequest = StatusRequest.failure;
+    }
+    update();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 }

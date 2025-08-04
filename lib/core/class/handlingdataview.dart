@@ -16,9 +16,7 @@ class HandlingDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ? Center(
-          child: Lottie.asset(AppImageAsset.loading, width: 250, height: 250),
-        )
+        ? Center(child: CircularProgressIndicator())
         : statusRequest == StatusRequest.offlinefailure
         ? Center(
           child: Lottie.asset(AppImageAsset.offline, width: 250, height: 250),

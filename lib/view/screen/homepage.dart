@@ -7,6 +7,8 @@ import '../../core/class/handlingdataview.dart';
 import '../widget/customappbar.dart';
 import '../widget/customcardhome.dart';
 import '../widget/listcategorieshome.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 /* class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,9 +49,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomescreenCntrl());
+    // احقن الكونترولر مرة واحدة فقط هنا
+    Get.put(HomeControllerImp());
     return Scaffold(
-      body: GetBuilder<HomescreenCntrl>(
+      body: GetBuilder<HomeControllerImp>(
         builder:
             (controller) => Container(
               padding: EdgeInsets.symmetric(horizontal: 15),
